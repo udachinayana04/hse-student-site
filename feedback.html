@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обратная связь | Удачина Я.В.</title>
+    
+    <base href="./">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; background-color: #f4f4f4;}
+        
+        header { background: #333; color: white; padding: 20px; display: flex; align-items: center; justify-content: space-between; }
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        header h1 { margin: 0; font-size: 1.8em; color: white; }
+        
+        nav ul { list-style: none; padding: 0; margin: 0; }
+        nav li { display: inline-block; margin-left: 20px; }
+        nav a { color: white; text-decoration: none; font-size: 1.1em; }
+        nav a:hover { text-decoration: underline; }
+
+        main { flex: 1; padding: 20px; max-width: 800px; margin: 20px auto; background: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 90%; }
+        
+        h2 { margin-top: 0; }
+        
+        fieldset { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+        legend { font-weight: bold; color: #0066cc; }
+        
+        label { display: block; margin-top: 15px; margin-bottom: 5px; font-weight: 500; }
+        input, select, textarea { width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; font-size: 1em; }
+        
+        button { background: #0066cc; color: white; border: none; padding: 10px 20px; margin-top: 15px; cursor: pointer; border-radius: 4px; font-size: 1em; }
+        button:hover { background: #0055aa; }
+        
+        input[type="radio"], input[type="checkbox"] { width: auto; display: inline-block; margin-right: 5px; }
+        .inline-label { display: inline-block; margin-right: 15px; margin-top: 0; font-weight: normal; }
+        
+        footer { background: #333; color: white; padding: 20px; margin-top: auto; font-size: 0.9em; text-align: center; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+        <img src="images/favicon.png" alt="Логотип" width="40" height="40">
+        <h1>Обратная связь</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Обо мне</a></li>
+            <li><a href="feedback.html">Обратная связь</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h2>Написать мне</h2>
+        <div style="margin-bottom: 20px;">
+            <p>Если у вас есть вопросы по проектам или предложения о сотрудничестве, заполните форму ниже.</p>
+        </div>
+
+        <form action="#" method="POST" oninput="result.value=parseInt(age.value)">
+            <fieldset>
+                <legend>Ваши данные</legend>
+                
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" required placeholder="Как к вам обращаться?" list="names">
+                <datalist id="names">
+                    <option value="Коллега">
+                    <option value="Преподаватель">
+                    <option value="Студент">
+                </datalist>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="example@hse.ru">
+
+                <label for="phone">Телефон:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{11}" placeholder="89991234567">
+                
+                <label for="birthdate">Дата рождения:</label>
+                <input type="date" id="birthdate" name="birthdate">
+
+                <label for="age">Возраст:</label>
+                <input type="range" id="age" name="age" min="16" max="99" value="20">
+                <output name="result">20</output> лет
+            </fieldset>
+
+            <fieldset>
+                <legend>Детали</legend>
+                
+                <label for="topic">Тема обращения:</label>
+                <select id="topic" name="topic">
+                    <optgroup label="Учеба">
+                        <option value="project">Совместный проект</option>
+                        <option value="help">Вопрос по учебе</option>
+                    </optgroup>
+                    <optgroup label="Другое">
+                        <option value="job">Предложение о работе</option>
+                        <option value="other">Прочее</option>
+                    </optgroup>
+                </select>
+
+                <label for="message">Сообщение:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                
+                <label for="file">Прикрепить файл:</label>
+                <input type="file" id="file" name="file">
+            </fieldset>
+
+            <fieldset>
+                <legend>Настройки</legend>
+                
+                <p>Удобный способ связи:</p>
+                <input type="radio" id="contact-tg" name="contact_method" value="telegram" checked>
+                <label for="contact-tg" class="inline-label">Telegram</label>
+                
+                <input type="radio" id="contact-email" name="contact_method" value="email">
+                <label for="contact-email" class="inline-label">Email</label>
+                
+                <br><br>
+                <input type="checkbox" id="copy" name="copy">
+                <label for="copy" class="inline-label">Отправить копию мне на почту</label>
+                
+                <br><br>
+                <label for="color">Ваш любимый цвет (для статистики):</label>
+                <input type="color" id="color" name="color" value="#0066cc" style="height: 40px; width: 60px;">
+            </fieldset>
+
+            <button type="submit">Отправить</button>
+            <button type="reset" style="background: #666;">Очистить</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <address>Москва, ВШЭ МИЭМ</address>
+    <p>&copy; 2026. Все права защищены.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Личная страница студента ВШЭ МИЭМ">
+    
+    <base href="./" target="_self">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    
+    <title>Я - студент ВШЭ | Главная</title>
+    
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; background-color: #f4f4f4; }
+        
+        header { background: #333; color: white; padding: 20px; display: flex; align-items: center; justify-content: space-between; }
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        header h1 { margin: 0; font-size: 1.8em; color: #5a9bd5; }
+        
+        nav ul { list-style: none; padding: 0; margin: 0; }
+        nav li { display: inline-block; margin-left: 20px; }
+        nav a { color: white; text-decoration: none; font-size: 1.1em; }
+        nav a:hover { text-decoration: underline; }
+
+        main { flex: 1; padding: 20px; max-width: 1000px; margin: 0 auto; width: 100%; box-sizing: border-box; background: white; }
+        
+        h2, h3 { color: #0066cc; margin-top: 1.5em; }
+        article header { background: #333; color: white; padding: 20px; margin-bottom: 20px; }
+        article header h2 { margin: 0; color: #5a9bd5; }
+        article header p { color: #ccc; margin: 5px 0 0 0; font-size: 0.9em; }
+
+        /* Стили для таблицы */
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        caption { font-weight: bold; margin-bottom: 10px; color: #555; text-align: left; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; vertical-align: top; }
+        th { background-color: #f2f2f2; }
+        tfoot td { background-color: #f9f9f9; font-style: italic; text-align: right; }
+        .day-header { background-color: #e3f2fd; font-weight: bold; text-align: center; vertical-align: middle; }
+
+        .student-info { background: #f9f9f9; padding: 15px; border-left: 5px solid #0066cc; margin-bottom: 20px; }
+        
+        aside { background: #f4f4f4; padding: 20px; margin: 20px 0; border-left: 5px solid #ccc; }
+
+        footer { background: #333; color: white; padding: 20px; margin-top: auto; font-size: 0.9em; }
+        dialog { border: 2px solid #0066cc; border-radius: 8px; padding: 20px; max-width: 400px; }
+        
+        figure { margin: 0; }
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+        <img src="images/favicon.png" alt="Логотип ВШЭ" width="40" height="40">
+        <h1>Личная страница студента ВШЭ</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Обо мне</a></li>
+            <li><a href="feedback.html">Обратная связь</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <article>
+        <header>
+            <h2>Удачина Яна Владимировна</h2>
+            <p>Опубликовано: <time datetime="2026-02-07">7 февраля 2026</time></p>
+        </header>
+
+        <div class="student-info">
+            <p>
+                Я — <b>Удачина Яна Владимировна</b>. Сдала ЕГЭ суммарно на <mark>286 баллов</mark> 
+                и летом 2022-го года поступила в <a href="#" style="color:#0066cc; font-weight:bold; text-decoration:none;">ВШЭ</a>.
+            </p>
+            <p>
+                Мой факультет — <i>МИЭМ</i>, ОП «Прикладная математика».
+            </p>
+        </div>
+
+        <figure>
+            <picture>
+                <source srcset="images/campus.jpg">
+                <img src="images/campus.jpg" alt="Кампус МИЭМ" width="600" height="300">
+            </picture>
+            <figcaption>Кампус МИЭМ на Таллинской.</figcaption>
+        </figure>
+
+        <details style="margin-top: 15px;">
+            <summary>Подробнее о моей образовательной программе</summary>
+            <p>
+                Образовательная программа «Прикладная математика» готовит специалистов в области математического моделирования, 
+                анализа данных и разработки сложных алгоритмов. Мы изучаем стохастические модели, суперкомпьютерные вычисления 
+                и современные методы программирования.
+            </p>
+        </details>
+    </article>
+
+    <hr>
+
+    <section>
+        <h3>Мои проекты</h3>
+        <ol>
+            <li>Разработка функциональной и системной архитектуры системы обеспечения жизненного цикла доверенного ПО</li>
+            <li>Разработка комплексов финансово-аналитических дашбордов</li>
+            <li>Применение метода Рунге-Кутта при решении систем обыкновенных дифференциальных уравнений</li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Мое расписание</h3>
+        <table>
+            <caption>Расписание занятий на февраль</caption>
+            
+            <colgroup>
+                <col style="width: 15%">
+                <col style="width: 15%">
+                <col style="width: 70%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>День</th>
+                    <th>Время</th>
+                    <th>Предмет</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Понедельник -->
+                <tr>
+                    <td rowspan="3" class="day-header">Понедельник</td>
+                    <td>13:00 - 14:20</td>
+                    <td>Предвестники переломных моментов в динамике сложных систем (Лекция)<br><small>Дмитриев А.В. (402 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>14:40 - 16:00</td>
+                    <td>Предвестники переломных моментов в динамике сложных систем (Семинар)<br><small>Дмитриев А.В. (413 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>16:20 - 17:40</td>
+                    <td>Предвестники переломных моментов в динамике сложных систем (Семинар)<br><small>Дмитриев А.В. (208 каб)</small></td>
+                </tr>
+
+                <!-- Вторник -->
+                <tr>
+                    <td rowspan="3" class="day-header">Вторник</td>
+                    <td>13:00 - 14:20</td>
+                    <td>Прикладные стохастические модели (Лекция)<br><small>Гришунина Ю.Б. (308 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>14:40 - 16:00</td>
+                    <td>Прикладные стохастические модели (Семинар)<br><small>Гришунина Ю.Б. (123 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>19:40 - 21:00</td>
+                    <td><b>Собрание 4 курс ПМ</b><br><small>Гайдуков Р.К. (308 каб)</small></td>
+                </tr>
+
+                <!-- Среда -->
+                <tr>
+                    <td rowspan="2" class="day-header">Среда</td>
+                    <td>13:00 - 14:20</td>
+                    <td>Веб-программирование (Лекция)<br><small>Зонтов Ю.В. (123 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>14:40 - 16:00</td>
+                    <td>Веб-программирование (Семинар)<br><small>Зонтов Ю.В. (123 каб)</small></td>
+                </tr>
+
+                <!-- Четверг -->
+                <tr>
+                    <td rowspan="4" class="day-header">Четверг</td>
+                    <td>09:30 - 10:50</td>
+                    <td>Введение в суперкомпьютерное моделирование (Лекция)<br><small>Писарев В.В. (408 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>11:10 - 12:30</td>
+                    <td>Научно-исследовательский семинар<br><small>Румянцева С.В. (406 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>13:00 - 14:20</td>
+                    <td>Научно-исследовательский семинар<br><small>Румянцева С.В. (406 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>14:40 - 16:00</td>
+                    <td>Прикладные стохастические модели (Практика)<br><small>Голубин А.Ю. (307 каб)</small></td>
+                </tr>
+            </tbody>
+            
+            <tfoot>
+                <tr>
+                    <td colspan="3">Итого: 12 пар в неделю</td>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+
+    <aside>
+        <h3>Словарь студента</h3>
+        <dl>
+            <dt>НИС</dt>
+            <dd>Научно-исследовательский семинар.</dd>
+            <dt>Дедлайн</dt>
+            <dd>Крайний срок сдачи работы.</dd>
+        </dl>
+    </aside>
+
+    <section>
+        <h3>Контакты</h3>
+        <button onclick="document.getElementById('contactDialog').showModal()">
+            Показать контакты
+        </button>
+        
+        <dialog id="contactDialog">
+            <h3>Связаться со мной</h3>
+            <ul>
+                <li>Email: <a href="mailto:yavudachina_1@edu.hse.ru">yavudachina_1@edu.hse.ru</a></li>
+                <li>Telegram: <b>@tvoyaa_udacha</b></li>
+            </ul>
+            <form method="dialog">
+                <button>Закрыть</button>
+            </form>
+        </dialog>
+    </section>
+
+    <section>
+        <h3>Медиа</h3>
+        <p>Видео-презентация:</p>
+        <video width="480" height="270" controls poster="images/poster.jpg">
+            <source src="media/movie.mp4" type="video/mp4">
+            <track kind="captions" srclang="ru" label="Russian">
+            Ваш браузер не поддерживает видео.
+        </video>
+        
+        <p>Любимый трек:</p>
+        <audio controls>
+            <source src="media/music.mp3" type="audio/mpeg">
+        </audio>
+    </section>
+
+    <footer style="margin-top: 20px;">
+        <svg width="16" height="16" style="vertical-align: middle;">
+            <circle cx="8" cy="8" r="5" fill="white" />
+        </svg>
+        <span>&copy; 2026 Удачина Я.В.</span>
+        
+        <canvas id="miniCanvas" width="50" height="10" style="display:none;"></canvas>
+        <map name="empty-map"><area shape="rect" coords="0,0,1,1" href="#" alt=""></map>
+        
+        <script>
+            console.log("Страница загружена");
+        </script>
+        <noscript>Включите JS!</noscript>
+    </footer>
+</main>
+</body>
+</html>
