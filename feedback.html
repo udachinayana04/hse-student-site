@@ -4,47 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Обратная связь | Удачина Я.В.</title>
-    
     <base href="./">
     <link rel="icon" href="images/favicon.png" type="image/png">
     
-    <style>
-        body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; background-color: #f4f4f4;}
-        
-        header { background: #333; color: white; padding: 20px; display: flex; align-items: center; justify-content: space-between; }
-        .header-left { display: flex; align-items: center; gap: 15px; }
-        header h1 { margin: 0; font-size: 1.8em; color: white; }
-        
-        nav ul { list-style: none; padding: 0; margin: 0; }
-        nav li { display: inline-block; margin-left: 20px; }
-        nav a { color: white; text-decoration: none; font-size: 1.1em; }
-        nav a:hover { text-decoration: underline; }
+    <!-- Подключение внешнего CSS -->
+    <link rel="stylesheet" href="styles/style.css">
 
-        main { flex: 1; padding: 20px; max-width: 800px; margin: 20px auto; background: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 90%; }
-        
-        h2 { margin-top: 0; }
-        
-        fieldset { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
-        legend { font-weight: bold; color: #0066cc; }
-        
-        label { display: block; margin-top: 15px; margin-bottom: 5px; font-weight: 500; }
-        input, select, textarea { width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; font-size: 1em; }
-        
-        button { background: #0066cc; color: white; border: none; padding: 10px 20px; margin-top: 15px; cursor: pointer; border-radius: 4px; font-size: 1em; }
-        button:hover { background: #0055aa; }
-        
-        input[type="radio"], input[type="checkbox"] { width: auto; display: inline-block; margin-right: 5px; }
-        .inline-label { display: inline-block; margin-right: 15px; margin-top: 0; font-weight: normal; }
-        
-        footer { background: #333; color: white; padding: 20px; margin-top: auto; font-size: 0.9em; text-align: center; }
+    <style>
+        /* Специфичные стили для формы */
+        fieldset {
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        legend {
+            background-color: #0056b3;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+            color: #495057;
+        }
+
+        /* Flexbox для радио кнопок */
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 5px;
+            width: auto; /* Сброс ширины 100% из style.css */
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="header-left">
+<header id="main-header">
+    <div class="header-left logo-container" style="display: flex; align-items: center; gap: 15px;">
         <img src="images/favicon.png" alt="Логотип" width="40" height="40">
-        <h1>Обратная связь</h1>
+        <h1 style="margin: 0; font-size: 1.5em;">Обратная связь</h1>
     </div>
     <nav>
         <ul>
@@ -54,23 +69,20 @@
     </nav>
 </header>
 
-<main>
+<main class="container">
     <section>
-        <h2>Написать мне</h2>
-        <div style="margin-bottom: 20px;">
-            <p>Если у вас есть вопросы по проектам или предложения о сотрудничестве, заполните форму ниже.</p>
-        </div>
+        <h2 style="text-align: center; border-bottom: 2px solid #0056b3; padding-bottom: 10px;">Написать мне</h2>
+        <p style="text-align: center; color: #666;">Заполните форму ниже, и я отвечу вам в ближайшее время.</p>
 
         <form action="#" method="POST" oninput="result.value=parseInt(age.value)">
             <fieldset>
-                <legend>Ваши данные</legend>
+                <legend>Личные данные</legend>
                 
                 <label for="name">Имя:</label>
-                <input type="text" id="name" name="name" required placeholder="Как к вам обращаться?" list="names">
+                <input type="text" id="name" name="name" required placeholder="Ваше имя" list="names">
                 <datalist id="names">
                     <option value="Коллега">
                     <option value="Преподаватель">
-                    <option value="Студент">
                 </datalist>
 
                 <label for="email">Email:</label>
@@ -79,64 +91,75 @@
                 <label for="phone">Телефон:</label>
                 <input type="tel" id="phone" name="phone" pattern="[0-9]{11}" placeholder="89991234567">
                 
-                <label for="birthdate">Дата рождения:</label>
-                <input type="date" id="birthdate" name="birthdate">
-
-                <label for="age">Возраст:</label>
-                <input type="range" id="age" name="age" min="16" max="99" value="20">
-                <output name="result">20</output> лет
+                <div style="display: flex; gap: 20px;">
+                    <div style="flex: 1;">
+                        <label for="birthdate">Дата рождения:</label>
+                        <input type="date" id="birthdate" name="birthdate">
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="age">Возраст: <output name="result" style="font-weight: bold; color: #0056b3;">20</output></label>
+                        <input type="range" id="age" name="age" min="16" max="99" value="20" style="width: 100%;">
+                    </div>
+                </div>
             </fieldset>
 
             <fieldset>
-                <legend>Детали</legend>
+                <legend>Сообщение</legend>
                 
-                <label for="topic">Тема обращения:</label>
+                <label for="topic">Тема:</label>
                 <select id="topic" name="topic">
                     <optgroup label="Учеба">
-                        <option value="project">Совместный проект</option>
-                        <option value="help">Вопрос по учебе</option>
+                        <option value="project">Проект</option>
+                        <option value="help">Вопрос</option>
                     </optgroup>
-                    <optgroup label="Другое">
-                        <option value="job">Предложение о работе</option>
-                        <option value="other">Прочее</option>
+                    <optgroup label="Работа">
+                        <option value="job">Оффер</option>
                     </optgroup>
                 </select>
 
-                <label for="message">Сообщение:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
+                <label for="message">Текст:</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Введите ваше сообщение..."></textarea>
                 
-                <label for="file">Прикрепить файл:</label>
+                <label for="file">Файл:</label>
                 <input type="file" id="file" name="file">
             </fieldset>
 
             <fieldset>
                 <legend>Настройки</legend>
                 
-                <p>Удобный способ связи:</p>
-                <input type="radio" id="contact-tg" name="contact_method" value="telegram" checked>
-                <label for="contact-tg" class="inline-label">Telegram</label>
+                <p style="margin-top: 0; font-weight: 600; color: #495057;">Связь через:</p>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="contact-tg" name="contact_method" value="telegram" checked>
+                        <label for="contact-tg" style="margin: 0; font-weight: normal;">Telegram</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="contact-email" name="contact_method" value="email">
+                        <label for="contact-email" style="margin: 0; font-weight: normal;">Email</label>
+                    </div>
+                </div>
                 
-                <input type="radio" id="contact-email" name="contact_method" value="email">
-                <label for="contact-email" class="inline-label">Email</label>
-                
-                <br><br>
-                <input type="checkbox" id="copy" name="copy">
-                <label for="copy" class="inline-label">Отправить копию мне на почту</label>
-                
-                <br><br>
-                <label for="color">Ваш любимый цвет (для статистики):</label>
-                <input type="color" id="color" name="color" value="#0066cc" style="height: 40px; width: 60px;">
+                <div style="margin-top: 20px;">
+                    <input type="checkbox" id="copy" name="copy">
+                    <label for="copy" style="display: inline; font-weight: normal;">Отправить копию мне</label>
+                </div>
+
+                <div style="margin-top: 15px;">
+                     <label for="color" style="display: inline-block; margin-right: 10px;">Любимый цвет:</label>
+                     <input type="color" id="color" name="color" value="#0056b3" style="vertical-align: middle;">
+                </div>
             </fieldset>
 
-            <button type="submit">Отправить</button>
-            <button type="reset" style="background: #666;">Очистить</button>
+            <div style="text-align: center;">
+                <button type="submit" class="btn">Отправить</button>
+                <button type="reset" class="btn" style="background-color: #6c757d; margin-left: 10px;">Очистить</button>
+            </div>
         </form>
     </section>
 </main>
 
-<footer>
-    <address>Москва, ВШЭ МИЭМ</address>
-    <p>&copy; 2026. Все права защищены.</p>
+<footer style="background-color: #343a40; color: #adb5bd; padding: 20px; text-align: center; margin-top: auto;">
+    <address>Москва, ВШЭ МИЭМ &copy; 2026</address>
 </footer>
 
 </body>
