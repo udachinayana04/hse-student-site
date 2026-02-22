@@ -175,6 +175,7 @@ function initVirtualChat() {
 
         const audio = document.createElement("audio");
         audio.controls = true;
+        audio.preload = "metadata";
         audio.src = audioUrl;
         message.appendChild(audio);
 
@@ -230,7 +231,10 @@ function initVirtualChat() {
         try {
             stream = await navigator.mediaDevices.getUserMedia({ audio: true });
             chunks = [];
-            mediaRecorder = new MediaRecorder(stream);
+            const recorderSetup = getRecorderSetup();
+            mediaRecorder = recorderSetup.options
+                ? new MediaRecorder(stream, recorderSetup.options)
+                : new MediaRecorder(stream);
 
             mediaRecorder.addEventListener("dataavailable", function (event) {
                 if (event.data.size > 0) {
@@ -238,8 +242,28 @@ function initVirtualChat() {
                 }
             });
 
+            mediaRecorder.addEventListener("error", function () {
+                voiceStatus.textContent = "Ошибка записи. Попробуйте еще раз.";
+                stopStreamTracks();
+                mediaRecorder = null;
+                voiceButton.textContent = "Голос";
+            });
+
             mediaRecorder.addEventListener("stop", function () {
-                const blob = new Blob(chunks, { type: "audio/webm" });
+                if (!chunks.length) {
+                    voiceStatus.textContent = "Запись не сохранилась. Попробуйте еще раз.";
+                    stopStreamTracks();
+                    mediaRecorder = null;
+                    voiceButton.textContent = "Голос";
+                    return;
+                }
+
+                const mimeType =
+                    chunks[0].type ||
+                    mediaRecorder.mimeType ||
+                    recorderSetup.mimeType ||
+                    "audio/mp4";
+                const blob = new Blob(chunks, { type: mimeType });
                 const audioUrl = URL.createObjectURL(blob);
                 addVoiceMessage(audioUrl);
                 voiceStatus.textContent = "Голосовое сообщение добавлено в чат.";
@@ -261,6 +285,31 @@ function initVirtualChat() {
         if (mediaRecorder && mediaRecorder.state === "recording") {
             mediaRecorder.stop();
         }
+    }
+
+    function getRecorderSetup() {
+        if (typeof window.MediaRecorder === "undefined" || typeof window.MediaRecorder.isTypeSupported !== "function") {
+            return { options: null, mimeType: "" };
+        }
+
+        const preferredTypes = [
+            "audio/mp4",
+            "audio/webm;codecs=opus",
+            "audio/webm",
+            "audio/ogg;codecs=opus"
+        ];
+
+        for (let i = 0; i < preferredTypes.length; i += 1) {
+            const type = preferredTypes[i];
+            if (window.MediaRecorder.isTypeSupported(type)) {
+                return {
+                    options: { mimeType: type },
+                    mimeType: type
+                };
+            }
+        }
+
+        return { options: null, mimeType: "" };
     }
 
     function stopStreamTracks() {
