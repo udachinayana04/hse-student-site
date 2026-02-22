@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Личная страница студента ВШЭ МИЭМ">
+    <base href="./" target="_self">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    
+    <title>Я - студент ВШЭ | Главная</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <style>
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .important-text {
+            color: #dc3545 !important;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #adb5bd;
+            padding: 20px;
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        aside {
+            background-color: #f8f9fa;
+            border-left: 5px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        
+        .campus-figure {
+            float: right;
+            margin: 0 0 10px 20px;
+            width: 40%;
+            max-width: 400px;
+        }
+        
+        @media (max-width: 600px) {
+            .campus-figure {
+                float: none;
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header id="main-header">
+    <div class="header-left logo-container" style="display: flex; align-items: center; gap: 15px;">
+        <img src="images/favicon.png" alt="Логотип ВШЭ" width="40" height="40">
+        <h1 style="margin: 0; font-size: 1.5em; text-transform: uppercase;">Личная страница</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Обо мне</a></li>
+            <li><a href="feedback.html">Обратная связь</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <article>
+        <header style="background:none; color:#333; padding:0; margin-bottom:10px; border-bottom: 2px solid #eee;">
+            <h2>Удачина Яна Владимировна</h2>
+            <p style="color: #6c757d;">Опубликовано: <time datetime="2026-02-07">7 февраля 2026</time></p>
+        </header>
+
+        <div class="student-info">
+            <span class="badge">Active</span>
+            <p>
+                Я — <b>Удачина Яна Владимировна</b>. Сдала ЕГЭ суммарно на <span class="highlight">286 баллов</span> 
+                и летом 2022-го года поступила в <a href="#" style="color:#0056b3;">ВШЭ</a>.
+            </p>
+            <p>
+                Мой факультет — <span class="important-text">МИЭМ</span>, ОП «Прикладная математика».
+            </p>
+        </div>
+
+        <figure class="campus-figure float-img">
+            <picture>
+                <source srcset="images/campus.jpg">
+                <img src="images/campus.jpg" alt="Кампус МИЭМ" style="width: 100%; border-radius: 5px;">
+            </picture>
+            <figcaption style="font-size: 0.8em; text-align: center; color: #666;">Кампус на Таллинской</figcaption>
+        </figure>
+
+        <p>
+            Мы учимся находить закономерности там, где другие видят хаос. Наш кампус оснащен современными лабораториями.
+        </p>
+
+        <details style="margin-top: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 5px; clear: both;">
+            <summary style="cursor: pointer; font-weight: bold; color: #0056b3;">Подробнее о моей образовательной программе</summary>
+            <p style="margin-top: 10px;">
+                Образовательная программа «Прикладная математика» готовит специалистов в области математического моделирования, 
+                анализа данных и разработки сложных алгоритмов. Мы изучаем стохастические модели, суперкомпьютерные вычисления 
+                и современные методы программирования.
+            </p>
+        </details>
+    </article>
+
+    <hr style="border: 0; height: 1px; background: #ddd; margin: 30px 0;">
+
+    <section>
+        <h3>Мои проекты</h3>
+        <ol style="background: #e7f1ff; padding: 20px 40px; border-radius: 8px;">
+            <li>Разработка функциональной и системной архитектуры системы обеспечения жизненного цикла доверенного ПО</li>
+            <li>Разработка комплексов финансово-аналитических дашбордов</li>
+            <li>Применение метода Рунге-Кутта при решении систем обыкновенных дифференциальных уравнений</li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Медиа</h3>
+        <p>Видео-презентация:</p>
+        <video width="480" height="270" controls poster="images/poster.jpg">
+            <source src="media/movie.mp4" type="video/mp4">
+            <track kind="captions" srclang="ru" label="Russian">
+            Ваш браузер не поддерживает видео.
+        </video>
+        
+        <p>Любимый трек:</p>
+        <audio controls>
+            <source src="media/music.mp3" type="audio/mpeg">
+        </audio>
+    </section>
+
+    <section>
+        <h3>Мое расписание</h3>
+        <table>
+            <caption>Расписание занятий на февраль</caption>
+            <thead>
+                <tr>
+                    <th>День</th>
+                    <th>Время</th>
+                    <th>Предмет</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="3" style="font-weight: bold; text-align: center; vertical-align: middle;">Понедельник</td>
+                    <td>13:00 - 14:20</td>
+                    <td>Предвестники переломных моментов (Лекция)<br><small style="color: #666;">Дмитриев А.В. (402 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>14:40 - 16:00</td>
+                    <td>Предвестники переломных моментов (Семинар)<br><small style="color: #666;">Дмитриев А.В. (413 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>16:20 - 17:40</td>
+                    <td>Предвестники переломных моментов (Семинар)<br><small style="color: #666;">Дмитриев А.В. (208 каб)</small></td>
+                </tr>
+
+                <tr>
+                    <td rowspan="3" style="font-weight: bold; text-align: center; vertical-align: middle;">Вторник</td>
+                    <td>13:00 - 14:20</td>
+                    <td>Прикладные стохастические модели (Лекция)<br><small style="color: #666;">Гришунина Ю.Б. (308 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>14:40 - 16:00</td>
+                    <td>Прикладные стохастические модели (Семинар)<br><small style="color: #666;">Гришунина Ю.Б. (123 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>19:40 - 21:00</td>
+                    <td><b>Собрание 4 курс ПМ</b><br><small style="color: #666;">Гайдуков Р.К. (308 каб)</small></td>
+                </tr>
+
+                <tr>
+                    <td rowspan="2" style="font-weight: bold; text-align: center; vertical-align: middle;">Среда</td>
+                    <td>13:00 - 14:20</td>
+                    <td>Веб-программирование (Лекция)<br><small style="color: #666;">Зонтов Ю.В. (123 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>14:40 - 16:00</td>
+                    <td>Веб-программирование (Семинар)<br><small style="color: #666;">Зонтов Ю.В. (123 каб)</small></td>
+                </tr>
+
+                <tr>
+                    <td rowspan="4" style="font-weight: bold; text-align: center; vertical-align: middle;">Четверг</td>
+                    <td>09:30 - 10:50</td>
+                    <td>Введение в суперкомпьютерное моделирование (Лекция)<br><small style="color: #666;">Писарев В.В. (408 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>11:10 - 12:30</td>
+                    <td>Научно-исследовательский семинар<br><small style="color: #666;">Румянцева С.В. (406 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>13:00 - 14:20</td>
+                    <td>Научно-исследовательский семинар<br><small style="color: #666;">Румянцева С.В. (406 каб)</small></td>
+                </tr>
+                <tr>
+                    <td>14:40 - 16:00</td>
+                    <td>Прикладные стохастические модели (Практика)<br><small style="color: #666;">Голубин А.Ю. (307 каб)</small></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" style="text-align: right; font-weight: bold; background: #e9ecef;">Итого: 12 пар в неделю</td>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+
+    <aside>
+        <h3>Словарь студента</h3>
+        <dl>
+            <dt style="font-weight: bold; color: #17a2b8;">НИС</dt>
+            <dd style="margin-bottom: 10px;">Научно-исследовательский семинар.</dd>
+            <dt style="font-weight: bold; color: #17a2b8;">Дедлайн</dt>
+            <dd>Крайний срок сдачи работы.</dd>
+        </dl>
+    </aside>
+
+    <section class="interactive-section">
+        <h3>Интерактивная карта кампуса</h3>
+        <p>Кампус МИЭМ ВШЭ на Таллинской улице:</p>
+        <div id="campusMap" aria-label="Карта кампуса МИЭМ"></div>
+    </section>
+
+    <section class="interactive-section">
+        <h3>Виртуальный чат с автором страницы</h3>
+        <p>Чат локальный: сообщения не отправляются на сервер.</p>
+        <div class="chat-card">
+            <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+            <form id="chatForm" class="chat-form">
+                <label for="chatInput">Ваше сообщение</label>
+                <div class="chat-controls">
+                    <input
+                        type="text"
+                        id="chatInput"
+                        name="chatInput"
+                        maxlength="250"
+                        placeholder="Например: Привет! Расскажи про расписание"
+                        required
+                    >
+                    <button type="submit" class="btn">Отправить</button>
+                    <button type="button" class="btn btn-secondary" id="voiceButton">Голос</button>
+                </div>
+                <small id="voiceStatus">Нажмите «Голос», чтобы записать сообщение.</small>
+            </form>
+        </div>
+    </section>
+
+    <section style="text-align: center; margin-top: 30px;">
+        <button id="openContactDialog" class="btn">
+            Показать контакты (Dialog)
+        </button>
+        
+        <dialog id="contactDialog">
+            <h3 style="margin-top: 0;">Связь</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li>Email: yavudachina_1@edu.hse.ru</li>
+                <li>Telegram: @tvoyaa_udacha</li>
+            </ul>
+            <form method="dialog">
+                <button class="btn" style="background-color: #6c757d;">Закрыть</button>
+            </form>
+        </dialog>
+    </section>
+</main>
+
+<footer>
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <svg width="20" height="20">
+            <circle cx="10" cy="10" r="8" fill="#6c757d" />
+        </svg>
+        <span>&copy; 2026 Удачина Я.В.</span>
+    </div>
+    
+    <canvas id="miniCanvas" width="50" height="10" style="display:none;"></canvas>
+    <map name="empty-map"><area shape="rect" coords="0,0,1,1" href="#" alt=""></map>
+    
+    <noscript>Включите JS!</noscript>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="scripts/main.js"></script>
+
+</body>
+</html>

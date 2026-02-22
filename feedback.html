@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обратная связь | Удачина Я.В.</title>
+    <base href="./">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    
+    <link rel="stylesheet" href="styles/style.css">
+
+    <style>
+        fieldset {
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        legend {
+            background-color: #0056b3;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+            color: #495057;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 5px;
+            width: auto;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header id="main-header">
+    <div class="header-left logo-container" style="display: flex; align-items: center; gap: 15px;">
+        <img src="images/favicon.png" alt="Логотип" width="40" height="40">
+        <h1 style="margin: 0; font-size: 1.5em;">Обратная связь</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Обо мне</a></li>
+            <li><a href="feedback.html">Обратная связь</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <section>
+        <h2 style="text-align: center; border-bottom: 2px solid #0056b3; padding-bottom: 10px;">Написать мне</h2>
+        <p style="text-align: center; color: #666;">Заполните форму ниже, и я отвечу вам в ближайшее время.</p>
+
+        <form action="#" method="POST" oninput="result.value=parseInt(age.value)">
+            <fieldset>
+                <legend>Личные данные</legend>
+                
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" required placeholder="Ваше имя" list="names">
+                <datalist id="names">
+                    <option value="Коллега">
+                    <option value="Преподаватель">
+                </datalist>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="example@hse.ru">
+
+                <label for="phone">Телефон:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{11}" placeholder="89991234567">
+                
+                <div style="display: flex; gap: 20px;">
+                    <div style="flex: 1;">
+                        <label for="birthdate">Дата рождения:</label>
+                        <input type="date" id="birthdate" name="birthdate">
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="age">Возраст: <output name="result" style="font-weight: bold; color: #0056b3;">20</output></label>
+                        <input type="range" id="age" name="age" min="16" max="99" value="20" style="width: 100%;">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Сообщение</legend>
+                
+                <label for="topic">Тема:</label>
+                <select id="topic" name="topic">
+                    <optgroup label="Учеба">
+                        <option value="project">Проект</option>
+                        <option value="help">Вопрос</option>
+                    </optgroup>
+                    <optgroup label="Работа">
+                        <option value="job">Оффер</option>
+                    </optgroup>
+                </select>
+
+                <label for="message">Текст:</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Введите ваше сообщение..."></textarea>
+                
+                <label for="file">Файл:</label>
+                <input type="file" id="file" name="file">
+            </fieldset>
+
+            <fieldset>
+                <legend>Настройки</legend>
+                
+                <p style="margin-top: 0; font-weight: 600; color: #495057;">Связь через:</p>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="contact-tg" name="contact_method" value="telegram" checked>
+                        <label for="contact-tg" style="margin: 0; font-weight: normal;">Telegram</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="contact-email" name="contact_method" value="email">
+                        <label for="contact-email" style="margin: 0; font-weight: normal;">Email</label>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <input type="checkbox" id="copy" name="copy">
+                    <label for="copy" style="display: inline; font-weight: normal;">Отправить копию мне</label>
+                </div>
+
+                <div style="margin-top: 15px;">
+                     <label for="color" style="display: inline-block; margin-right: 10px;">Любимый цвет:</label>
+                     <input type="color" id="color" name="color" value="#0056b3" style="vertical-align: middle;">
+                </div>
+            </fieldset>
+
+            <div style="text-align: center;">
+                <button type="submit" class="btn">Отправить</button>
+                <button type="reset" class="btn" style="background-color: #6c757d; margin-left: 10px;">Очистить</button>
+            </div>
+        </form>
+    </section>
+</main>
+
+<footer style="background-color: #343a40; color: #adb5bd; padding: 20px; text-align: center; margin-top: auto;">
+    <address>Москва, ВШЭ МИЭМ &copy; 2026</address>
+</footer>
+
+</body>
+</html>
